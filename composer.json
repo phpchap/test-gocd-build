@@ -1,0 +1,12 @@
+{
+    "name": "justendoherty/test-gocd-build",
+    "authors": [
+        {
+            "name": "Justen Doherty",
+            "email": "justen.doherty@kurtgeiger.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "3.7.*"
+    }
+}
