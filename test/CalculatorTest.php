@@ -7,7 +7,9 @@ include_once(getcwd()."/src/Calculator.php");
 class CalculatorTest extends \PHPUnit_Framework_TestCase
 {
     public function testDivideByPositiveNumber() {
-        $calcMock=$this->getMock('\Calculator',array('getNumberFromUserInput'));
+        $calcMock = $this->getMockBuilder('\Calculator')
+            ->setMethods(array('getNumberFromUserInput'))
+            ->getMock();
         $calcMock->expects($this->once())
             ->method('getNumberFromUserInput')
             ->will($this->returnValue(10));
@@ -15,7 +17,9 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testDivideByZero() {
-        $calcMock=$this->getMock('\Calculator',array('getNumberFromUserInput'));
+        $calcMock=$this->getMockBuilder('\Calculator')
+            ->setMethods(array('getNumberFromUserInput'))
+            ->getMock();
         $calcMock->expects($this->never())
             ->method('getNumberFromUserInput')
             ->will($this->returnValue(10));
@@ -23,14 +27,19 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testDivideByNegativeNumber() {
-        $calcMock=$this->getMock('\Calculator',array('getNumberFromUserInput'));
+        $calcMock=$this->getMockBuilder('\Calculator')
+            ->setMethods(array('getNumberFromUserInput'))
+            ->getMock();
         $calcMock->expects($this->once())
             ->method('getNumberFromUserInput')
             ->will($this->returnValue(10));
         $this->assertEquals(-2,$calcMock->divideBy(-5));
     }
+
     public function testDivideByPositiveNumberAndPrint() {
-        $calcMock=$this->getMock('\Calculator',array('getNumberFromUserInput', 'printToScreen'));
+        $calcMock=$this->getMockBuilder('\Calculator')
+            ->setMethods(array('getNumberFromUserInput', 'printToScreen'))
+            ->getMock();
         $calcMock->expects($this->once())
             ->method('getNumberFromUserInput')
             ->will($this->returnValue(10));
@@ -39,4 +48,5 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo('5'));
         $calcMock->divideByAndPrint(2);
     }
+
 }
